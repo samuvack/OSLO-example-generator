@@ -1,0 +1,70 @@
+[
+{
+  "name": "Verkeersmetingen-im",
+  "type": "ap",
+  "eap": "Verkeersmetingen-IM.eap",
+  "diagram": "VSDS-Verkeersmetingen",
+  "template": "mijn-implementatiemodel-im.j2",
+  "title": "Implementatiemodel Verkeersmetingen",
+  "publication-state": "https://data.vlaanderen.be/id/concept/StandaardStatus/OntwerpStandaard",
+  "publication-date": "2023-09-27",
+  "license": "https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0",
+  "contributors-file": "stakeholders.csv",
+  "contributors-column": "Verkeersmetingen",
+  "site": "site-skeleton/verkeersmetingen-im",
+  "feedbackurl": "https://github.com/Informatievlaanderen/OSLOthema-im-verkeersmetingen/issues",
+  "standaardregisterurl": "https://data.vlaanderen.be/standaarden/"
+},
+  {
+  "name": "Verkeersmetingen-im-voc",
+  "type": "voc",
+  "eap": "Verkeersmetingen-IM.eap",
+  "diagram": "VSDS-Verkeersmetingen",
+  "template": "voc-im-verkeersmetingen.j2",
+  "title": "Vocabularium Implementatiemodel Verkeersmetingen",
+  "publication-state": "https://data.vlaanderen.be/id/concept/StandaardStatus/OntwerpStandaard",
+  "publication-date": "2023-09-27",
+  "license": "https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0",
+  "contributors-file": "stakeholders.csv",
+  "contributors-column": "Verkeersmetingen",
+  "site": "site-skeleton/verkeersmetingen-im",
+  "feedbackurl": "https://github.com/Informatievlaanderen/OSLOthema-im-verkeersmetingen/issues",
+  "standaardregisterurl": "https://data.vlaanderen.be/standaarden/"
+},
+
+{
+  "name": "Verkeersmetingen-im-verzameling",
+  "type": "ap",
+  "eap": "Verkeersmetingen-IM-verzameling.eap",
+  "diagram": "VSDS-Verkeersmetingen",
+  "template": "mijn-implementatiemodel-im-verzameling.j2",
+  "title": "Implementatiemodel Verkeersmetingverzameling",
+  "publication-state": "https://data.vlaanderen.be/id/concept/StandaardStatus/OntwerpStandaard",
+  "publication-date": "2023-09-27",
+  "license": "https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0",
+  "contributors-file": "stakeholders.csv",
+  "contributors-column": "Verkeersmetingen",
+  "site": "site-skeleton/verkeersmetingen-im-verzameling",
+  "feedbackurl": "https://github.com/Informatievlaanderen/OSLOthema-im-verkeersmetingen/issues",
+  "standaardregisterurl": "https://data.vlaanderen.be/standaarden/"
+},
+  {
+  "name": "Verkeersmetingen-im-voc-verzameling",
+  "type": "voc",
+  "eap": "Verkeersmetingen-IM-verzameling.eap",
+  "diagram": "VSDS-Verkeersmetingen",
+  "template": "voc-im-verkeersmetingen-verzameling.j2",
+  "title": "Vocabularium Implementatiemodel Verkeersmetingverzameling",
+  "publication-state": "https://data.vlaanderen.be/id/concept/StandaardStatus/OntwerpStandaard",
+  "publication-date": "2023-09-27",
+  "license": "https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0",
+  "contributors-file": "stakeholders.csv",
+  "contributors-column": "Verkeersmetingen",
+  "site": "site-skeleton/verkeersmetingen-im-verzameling",
+  "feedbackurl": "https://github.com/Informatievlaanderen/OSLOthema-im-verkeersmetingen/issues",
+  "standaardregisterurl": "https://data.vlaanderen.be/standaarden/"
+}
+
+
+
+]

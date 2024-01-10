@@ -1,0 +1,154 @@
+{
+    "@context": [
+        {
+            "cl-Observatieproceduretype": "https://data.vlaanderen.be/doc/concept/Observatieproceduretype#",
+            "cl-Teken": "https://data.vlaanderen.be/doc/concept/Teken#",
+            "cl-Voertuigtype": "https://data.vlaanderen.be/doc/concept/Voertuigtype#",
+            "cl-Verkeerstellingkenmerktype": "https://data.vlaanderen.be/doc/concept/Verkeerstellingkenmerktype#",
+            "cl-Verkeerssnelheidsmetingkenmerktype": "https://data.vlaanderen.be/doc/concept/Verkeerssnelheidsmetingkenmerktype#",
+            "cl-Linkrichtingtype": "https://data.vlaanderen.be/doc/concept/Linkrichtingtype#"
+        }
+    ],
+    "@graph": [
+        {
+            "@id": "_:Verkeersdomeinobject001",
+            "@type": "Verkeersdomeinobject"
+        },
+        {
+            "@id": "_:Verkeersobject001",
+            "@type": "Verkeersobject",
+            "waardeverschaffer": "_:Verkeersmeting001"
+        },
+        {
+            "@id": "_:Verkeersmeting001",
+            "@type": "Verkeersmeting",
+            "fenomeenTijd": "temporele entiteit",
+            "geobserveerdKenmerk": "_:Verkeerskenmerk001",
+            "geobserveerdObject": "_:Verkeersmeetpunt001",
+            "gebruikteProcedure": "_:Observatieprocedure001",
+            "uitgevoerdMet": "_:Sensor001"
+        },
+        {
+            "@id": "_:Verkeersmeetpunt001",
+            "@type": "Verkeersmeetpunt",
+            "geometrie": {
+                "@type": "punt",
+                "Geometrie.gml": {
+                    "@value": "<gml:Point srsName=\"http:\\//www.opengis.net/def/crs/EPSG/0/4326\"><gml:coordinates>  Vul in: Lat Lon </gml:coordinates><gml:Point>",
+                    "@type": "geosparql:gmlliteral"
+                }
+            },
+            "verkeersmeetpuntnetwerkreferentie": {
+                "@type": "puntreferentie",
+                "op positie": "Lengte"
+            }
+        },
+        {
+            "@id": "_:Verkeersbemonsteringsobject001",
+            "@type": "Verkeersbemonsteringsobject",
+            "bemonsterdObject": "_:Verkeersdomeinobject001"
+        },
+        {
+            "@id": "_:Verkeerskenmerk001",
+            "@type": "Verkeerskenmerk",
+            "voertuigType": "Voertuigtype"
+        },
+        {
+            "@id": "_:Rijrichting001",
+            "@type": "Rijrichting",
+            "rijrichting": "Linkrichtingtype",
+            "Rijrichting.netwerkreferentieelement": "_:Wegsegment001"
+        },
+        {
+            "@id": "_:Agent001",
+            "@type": "Agent"
+        },
+        {
+            "@id": "_:Wegknoop001",
+            "@type": "Wegknoop",
+            "geometrie": {
+                "@type": "punt",
+                "Geometrie.gml": {
+                    "@value": "<gml:Point srsName=\"http:\\//www.opengis.net/def/crs/EPSG/0/4326\"><gml:coordinates>  Vul in: Lat Lon </gml:coordinates><gml:Point>",
+                    "@type": "geosparql:gmlliteral"
+                }
+            }
+        },
+        {
+            "@id": "_:Wegobject001",
+            "@type": "Wegobject"
+        },
+        {
+            "@id": "_:Wegsegment001",
+            "@type": "Wegsegment",
+            "geometriemiddenlijn": {
+                "@type": "lijnstring",
+                "Geometrie.gml": {
+                    "@value": "<gml:Polyline srsName=\"http:\\//www.opengis.net/def/crs/EPSG/0/4326\"><gml:coordinates> Vul in: Lat Lon, Lat Lon</gml:coordinates><gml:Point>",
+                    "@type": "geosparql:gmlliteral"
+                }
+            },
+            "eindknoop": "_:Wegknoop001",
+            "beginknoop": "_:Wegknoop001"
+        },
+        {
+            "@id": "_:Observatieprocedure001",
+            "@type": "Observatieprocedure",
+            "type": "cl-Observatieproceduretype#Vul_in",
+            "ge\u00ef\u00bf\u00bdmplementeerdMet": "_:Sensor001"
+        },
+        {
+            "@id": "_:Sensor001",
+            "@type": "Sensor",
+            "ligging": "Locatie",
+            "implementeert": "_:Observatieprocedure001",
+            "uitgevoerdeObservatie": "_:Verkeersmeting001"
+        },
+        {
+            "@id": "_:Transportlink001",
+            "@type": "Transportlink"
+        },
+        {
+            "@id": "_:Netwerkelement001",
+            "@type": "Netwerkelement"
+        },
+        {
+            "@id": "_:Object001",
+            "@type": "Object"
+        },
+        {
+            "@id": "_:Kenmerktype001",
+            "@type": "Kenmerktype"
+        },
+        {
+            "@id": "_:Transporteigenschap001",
+            "@type": "Transporteigenschap"
+        },
+        {
+            "@id": "_:Domeinobject001",
+            "@type": "Domeinobject"
+        },
+        {
+            "@id": "_:Verkeerstelling001",
+            "@type": "Verkeerstelling",
+            "Verkeerstelling.tellingresultaat": "",
+            "Verkeerstelling.geobserveerdKenmerk": "_:Verkeerstellingkenmerk001"
+        },
+        {
+            "@id": "_:Verkeerstellingkenmerk001",
+            "@type": "Verkeerstellingkenmerk",
+            "Verkeerstellingkenmerk.kenmerktype": "cl-Verkeerstellingkenmerktype#Vul_in"
+        },
+        {
+            "@id": "_:Verkeerssnelheidsmetingkenmerk001",
+            "@type": "Verkeerssnelheidsmetingkenmerk",
+            "Verkeerssnelheidsmetingkenmerk.kenmerktype": "cl-Verkeerssnelheidsmetingkenmerktype#Vul_in"
+        },
+        {
+            "@id": "_:Verkeerssnelheidsmeting001",
+            "@type": "Verkeerssnelheidsmeting",
+            "resultaat": "Maat",
+            "Verkeerssnelheidsmeting.geobserveerdKenmerk": "_:Verkeerssnelheidsmetingkenmerk001"
+        }
+    ]
+}

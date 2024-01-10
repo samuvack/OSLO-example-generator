@@ -1,0 +1,269 @@
+{
+    "@context": [
+        {
+            "cl-Verkeerskenmerktype": "https://data.vlaanderen.be/doc/concept/Verkeerskenmerktype#",
+            "cl-Informatietype": "https://data.vlaanderen.be/doc/concept/Informatietype#",
+            "cl-Observatieproceduretype": "https://data.vlaanderen.be/doc/concept/Observatieproceduretype#",
+            "cl-Taalcode": "https://data.vlaanderen.be/doc/concept/Taalcode#",
+            "cl-Teken": "https://data.vlaanderen.be/doc/concept/Teken#",
+            "cl-Linkrichtingtype": "https://data.vlaanderen.be/doc/concept/Linkrichtingtype#",
+            "cl-Voertuigtype": "https://data.vlaanderen.be/doc/concept/Voertuigtype#",
+            "cl-Verkeersdeelnemertype": "https://data.vlaanderen.be/doc/concept/Verkeersdeelnemertype#",
+            "cl-Rijstrooktype": "https://data.vlaanderen.be/doc/concept/Rijstrooktype#"
+        }
+    ],
+    "@graph": [
+        {
+            "@id": "_:Verkeersmetingverzameling001",
+            "@type": "Verkeersmetingverzameling",
+            "geobserveerdObject": "_:Verkeersobject001",
+            "uitgevoerdMet": "_:Sensor001",
+            "fenomeentijd": "temporele entiteit",
+            "geobserveerdKenmerk": "_:Verkeerskenmerk001",
+            "metadata": "_:metadata001",
+            "heeftLid": "_:Verkeersmeting001"
+        },
+        {
+            "@id": "_:Verkeersobject001",
+            "@type": "Verkeersobject",
+            "waardeverschaffer": "_:Verkeersmeting001"
+        },
+        {
+            "@id": "_:Verkeersmeting001",
+            "@type": "Verkeersmeting",
+            "fenomeenTijd": "temporele entiteit",
+            "resultaat": "Any",
+            "resultaattijd": "Moment",
+            "resultaatkwaliteit": "Kwaliteitselement",
+            "uitgevoerdDoor": "",
+            "metadata": "_:metadata001",
+            "geobserveerdKenmerk": "_:Verkeerskenmerk001",
+            "geobserveerdObject": "_:Verkeersobject001",
+            "gebruikteProcedure": "_:Observatieprocedure001",
+            "uitgevoerdMet": "_:Sensor001"
+        },
+        {
+            "@id": "_:Verkeersmeetpunt001",
+            "@type": "Verkeersmeetpunt",
+            "geometrie": {
+                "@type": "punt",
+                "Geometrie.gml": {
+                    "@value": "<gml:Point srsName=\"http:\\//www.opengis.net/def/crs/EPSG/0/4326\"><gml:coordinates>  Vul in: Lat Lon </gml:coordinates><gml:Point>",
+                    "@type": "geosparql:gmlliteral"
+                }
+            },
+            "netwerkreferentie": "netwerkreferentie",
+            "rijrichting": "Linkrichtingtype",
+            "wegdeel": "Wegdeel"
+        },
+        {
+            "@id": "_:Verkeersbemonsteringsobject001",
+            "@type": "Verkeersbemonsteringsobject",
+            "bemonsterdObject": "_:Verkeersdomeinobject001"
+        },
+        {
+            "@id": "_:Voertuig001",
+            "@type": "Voertuig",
+            "voertuigtype": "Voertuigtype"
+        },
+        {
+            "@id": "_:Verkeersdomeinobject001",
+            "@type": "Verkeersdomeinobject"
+        },
+        {
+            "@id": "_:Verkeerskenmerk001",
+            "@type": "Verkeerskenmerk",
+            "type": "cl-Informatietype#Vul_in",
+            "voertuigType": "Voertuigtype",
+            "verkeersdeelnemertype": "cl-Verkeersdeelnemertype#Vul_in"
+        },
+        {
+            "@id": "_:Verkeersmeettraject001",
+            "@type": "Verkeersmeettraject",
+            "geometrie": {
+                "@type": "punt",
+                "Geometrie.gml": {
+                    "@value": "<gml:Point srsName=\"http:\\//www.opengis.net/def/crs/EPSG/0/4326\"><gml:coordinates>  Vul in: Lat Lon </gml:coordinates><gml:Point>",
+                    "@type": "geosparql:gmlliteral"
+                }
+            },
+            "netwerkReferentie": "netwerkreferentie",
+            "rijrichting": "Linkrichtingtype",
+            "wegdeel": "Wegdeel"
+        },
+        {
+            "@id": "_:Rijstrook001",
+            "@type": "Rijstrook",
+            "netwerkreferentie": "netwerkreferentie",
+            "rijstrook": {
+                "@type": "Identificator",
+                "Identificator.identificator": {
+                    "@value": "Rijstrook_type001",
+                    "@type": "cl-idt:Rijstrook"
+                }
+            },
+            "rijstrooktype": "cl-Rijstrooktype#Vul_in"
+        },
+        {
+            "@id": "_:Rijrichting001",
+            "@type": "Rijrichting",
+            "netwerkreferentie": "netwerkreferentie",
+            "rijrichting": "Linkrichtingtype"
+        },
+        {
+            "@id": "_:Agent001",
+            "@type": "Agent"
+        },
+        {
+            "@id": "_:Wegknoop001",
+            "@type": "Wegknoop",
+            "geometrie": {
+                "@type": "punt",
+                "Geometrie.gml": {
+                    "@value": "<gml:Point srsName=\"http:\\//www.opengis.net/def/crs/EPSG/0/4326\"><gml:coordinates>  Vul in: Lat Lon </gml:coordinates><gml:Point>",
+                    "@type": "geosparql:gmlliteral"
+                }
+            }
+        },
+        {
+            "@id": "_:Wegobject001",
+            "@type": "Wegobject"
+        },
+        {
+            "@id": "_:Wegsegment001",
+            "@type": "Wegsegment",
+            "geometriemiddenlijn": {
+                "@type": "lijnstring",
+                "Geometrie.gml": {
+                    "@value": "<gml:Polyline srsName=\"http:\\//www.opengis.net/def/crs/EPSG/0/4326\"><gml:coordinates> Vul in: Lat Lon, Lat Lon</gml:coordinates><gml:Point>",
+                    "@type": "geosparql:gmlliteral"
+                }
+            },
+            "eindknoop": "_:Wegknoop001",
+            "beginknoop": "_:Wegknoop001"
+        },
+        {
+            "@id": "_:Input001",
+            "@type": "Input",
+            "referentie": "TODO: vul URI in",
+            "type": "cl-Informatietype#Vul_in"
+        },
+        {
+            "@id": "_:Output001",
+            "@type": "Output",
+            "referentie": "TODO: vul URI in",
+            "type": "cl-Informatietype#Vul_in"
+        },
+        {
+            "@id": "_:Observatieprocedure001",
+            "@type": "Observatieprocedure",
+            "specificatie": "TODO: vul URI in",
+            "input": "_:Input001",
+            "output": "_:Output001",
+            "type": "cl-Informatietype#Vul_in",
+            "ge\u00ef\u00bf\u00bdmplementeerdMet": "_:Sensor001"
+        },
+        {
+            "@id": "_:Sensor001",
+            "@type": "Sensor",
+            "ligging": "Locatie",
+            "gehostDoor": "_:Toestel001",
+            "implementeert": "_:Observatieprocedure001",
+            "uitgevoerdeObservatie": "_:Verkeersmeting001"
+        },
+        {
+            "@id": "_:Toestel001",
+            "@type": "Toestel",
+            "fabrikant": "LangString",
+            "model": "LangString",
+            "functie": "Functie",
+            "taak": "Taak",
+            "hostVan": "_:Sensor001"
+        },
+        {
+            "@id": "_:metadata001",
+            "@type": "metadata",
+            "beschrijving": "LangString",
+            "bron": "TODO: vul URI in",
+            "onderwerp": "TODO: vul URI in",
+            "rechten": "TODO: vul URI in",
+            "relatie": "TODO: vul URI in",
+            "titel": "LangString",
+            "auteur": "_:Agent001",
+            "datum": "temporele entiteit",
+            "dekking": "Dekking",
+            "formaat": "Formaat",
+            "medeAuteur": "",
+            "taal": "cl-Taalcode#Vul_in",
+            "type": "cl-Informatietype#Vul_in",
+            "uitgever": "_:Agent001"
+        },
+        {
+            "@id": "_:Link001",
+            "@type": "Link"
+        },
+        {
+            "@id": "_:Transportknoop001",
+            "@type": "Transportknoop"
+        },
+        {
+            "@id": "_:Transportlink001",
+            "@type": "Transportlink"
+        },
+        {
+            "@id": "_:Transportlinksequentie001",
+            "@type": "Transportlinksequentie"
+        },
+        {
+            "@id": "_:Netwerkelement001",
+            "@type": "Netwerkelement"
+        },
+        {
+            "@id": "_:Any001",
+            "@type": "Any"
+        },
+        {
+            "@id": "_:Object001",
+            "@type": "Object"
+        },
+        {
+            "@id": "_:Kenmerktype001",
+            "@type": "Kenmerktype"
+        },
+        {
+            "@id": "_:Transporteigenschap001",
+            "@type": "Transporteigenschap"
+        },
+        {
+            "@id": "_:Domeinobject001",
+            "@type": "Domeinobject"
+        },
+        {
+            "@id": "_:Fietspad001",
+            "@type": "Fietspad",
+            "netwerkreferentie": "netwerkreferentie"
+        },
+        {
+            "@id": "_:Voetpad001",
+            "@type": "Voetpad",
+            "netwerkreferentie": "netwerkreferentie"
+        },
+        {
+            "@id": "_:Verkeersdeelnemer001",
+            "@type": "Verkeersdeelnemer",
+            "verkeersdeelnemertype": "cl-Verkeersdeelnemertype#Vul_in"
+        },
+        {
+            "@id": "_:Wegdeel001",
+            "@type": "Wegdeel"
+        },
+        {
+            "@id": "_:Weglinksequentie001",
+            "@type": "Weglinksequentie",
+            "link": {
+                "@type": "gerichte link",
+                "richting": null
+            }
+        }
+    ]
+}
