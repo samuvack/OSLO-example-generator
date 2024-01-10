@@ -16,99 +16,111 @@
         {
             "@id": "_:Verkeersmetingverzameling001",
             "@type": "Verkeersmetingverzameling",
-            "geobserveerdObject": "_:Verkeersobject001",
-            "uitgevoerdMet": "_:Sensor001",
-            "fenomeentijd": "temporele entiteit",
-            "geobserveerdKenmerk": "_:Verkeerskenmerk001",
-            "metadata": "_:metadata001",
-            "heeftLid": "_:Verkeersmeting001"
+            "inherited_from": "Aanvullende properties kan je vinden in externe klasse : Observatieverzameling",
+            "Verkeersmetingverzameling.geobserveerdObject": "_:Verkeersobject001",
+            "Verkeersmetingverzameling.uitgevoerdMet": "_:Sensor001",
+            "Verkeersmetingverzameling.fenomeentijd": "temporele entiteit",
+            "Verkeersmetingverzameling.geobserveerdKenmerk": "_:Verkeerskenmerk001",
+            "Verkeersmetingverzameling.metadata": "_:metadata001",
+            "Verkeersmetingverzameling.heeftLid": "_:Verkeersmeting001"
         },
         {
             "@id": "_:Verkeersobject001",
             "@type": "Verkeersobject",
-            "waardeverschaffer": "_:Verkeersmeting001"
+            "Verkeersobject.waardeverschaffer": "_:Verkeersmeting001"
         },
         {
             "@id": "_:Verkeersmeting001",
             "@type": "Verkeersmeting",
-            "fenomeenTijd": "temporele entiteit",
-            "resultaat": "Any",
-            "resultaattijd": "Moment",
-            "resultaatkwaliteit": "Kwaliteitselement",
+            "inherited_from": "Aanvullende properties kan je vinden in externe klasse : Observatie",
+            "Verkeersmeting.fenomeenTijd": "temporele entiteit",
+            "Verkeersmeting.resultaat": "Any",
+            "Verkeersmeting.resultaattijd": "Moment",
+            "Verkeersmeting.resultaatkwaliteit": "Kwaliteitselement",
             "uitgevoerdDoor": "",
-            "metadata": "_:metadata001",
-            "geobserveerdKenmerk": "_:Verkeerskenmerk001",
-            "geobserveerdObject": "_:Verkeersobject001",
-            "gebruikteProcedure": "_:Observatieprocedure001",
-            "uitgevoerdMet": "_:Sensor001"
+            "Verkeersmeting.metadata": "_:metadata001",
+            "Verkeersmeting.geobserveerdKenmerk": "_:Verkeerskenmerk001",
+            "Verkeersmeting.geobserveerdObject": "_:Verkeersobject001",
+            "Verkeersmeting.gebruikteProcedure": "_:Observatieprocedure001",
+            "Verkeersmeting.uitgevoerdMet": "_:Sensor001"
         },
         {
             "@id": "_:Verkeersmeetpunt001",
             "@type": "Verkeersmeetpunt",
-            "geometrie": {
+            "parent": "Verkeersbemonsteringsobject",
+            "inherited_from": "Aanvullende properties kan je vinden in externe klasse : Bemonsteringspunt",
+            "Verkeersmeetpunt.geometrie": {
                 "@type": "punt",
                 "Geometrie.gml": {
                     "@value": "<gml:Point srsName=\"http:\\//www.opengis.net/def/crs/EPSG/0/4326\"><gml:coordinates>  Vul in: Lat Lon </gml:coordinates><gml:Point>",
                     "@type": "geosparql:gmlliteral"
                 }
             },
-            "netwerkreferentie": "netwerkreferentie",
-            "rijrichting": "Linkrichtingtype",
-            "wegdeel": "Wegdeel"
+            "Verkeersmeetpunt.netwerkreferentie": "netwerkreferentie",
+            "Verkeersmeetpunt.rijrichting": "Linkrichtingtype",
+            "Verkeersmeetpunt.wegdeel": "Wegdeel"
         },
         {
             "@id": "_:Verkeersbemonsteringsobject001",
             "@type": "Verkeersbemonsteringsobject",
-            "bemonsterdObject": "_:Verkeersdomeinobject001"
+            "parent": "Verkeersobject",
+            "inherited_from": "Aanvullende properties kan je vinden in externe klasse : Bemonsteringsobject",
+            "Verkeersbemonsteringsobject.bemonsterdObject": "_:Verkeersdomeinobject001"
         },
         {
             "@id": "_:Voertuig001",
             "@type": "Voertuig",
-            "voertuigtype": "Voertuigtype"
+            "parent": "Verkeersdomeinobject",
+            "Voertuig.voertuigtype": "Voertuigtype"
         },
         {
             "@id": "_:Verkeersdomeinobject001",
-            "@type": "Verkeersdomeinobject"
+            "@type": "Verkeersdomeinobject",
+            "parent": "Verkeersobject"
         },
         {
             "@id": "_:Verkeerskenmerk001",
             "@type": "Verkeerskenmerk",
-            "type": "cl-Informatietype#Vul_in",
-            "voertuigType": "Voertuigtype",
-            "verkeersdeelnemertype": "cl-Verkeersdeelnemertype#Vul_in"
+            "Verkeerskenmerk.type": "cl-Informatietype#Vul_in",
+            "Verkeerskenmerk.voertuigType": "Voertuigtype",
+            "Verkeerskenmerk.verkeersdeelnemertype": "cl-Verkeersdeelnemertype#Vul_in"
         },
         {
             "@id": "_:Verkeersmeettraject001",
             "@type": "Verkeersmeettraject",
-            "geometrie": {
+            "parent": "Verkeersbemonsteringsobject",
+            "inherited_from": "Aanvullende properties kan je vinden in externe klasse : Bemonsteringscurve",
+            "Verkeersmeettraject.geometrie": {
                 "@type": "punt",
                 "Geometrie.gml": {
                     "@value": "<gml:Point srsName=\"http:\\//www.opengis.net/def/crs/EPSG/0/4326\"><gml:coordinates>  Vul in: Lat Lon </gml:coordinates><gml:Point>",
                     "@type": "geosparql:gmlliteral"
                 }
             },
-            "netwerkReferentie": "netwerkreferentie",
-            "rijrichting": "Linkrichtingtype",
-            "wegdeel": "Wegdeel"
+            "Verkeersmeettraject.netwerkReferentie": "netwerkreferentie",
+            "Verkeersmeettraject.rijrichting": "Linkrichtingtype",
+            "Verkeersmeettraject.wegdeel": "Wegdeel"
         },
         {
             "@id": "_:Rijstrook001",
             "@type": "Rijstrook",
-            "netwerkreferentie": "netwerkreferentie",
-            "rijstrook": {
+            "parent": "Verkeersdomeinobject",
+            "Rijstrook.netwerkreferentie": "netwerkreferentie",
+            "Rijstrook.rijstrook": {
                 "@type": "Identificator",
                 "Identificator.identificator": {
                     "@value": "Rijstrook_type001",
                     "@type": "cl-idt:Rijstrook"
                 }
             },
-            "rijstrooktype": "cl-Rijstrooktype#Vul_in"
+            "Rijstrook.rijstrooktype": "cl-Rijstrooktype#Vul_in"
         },
         {
             "@id": "_:Rijrichting001",
             "@type": "Rijrichting",
-            "netwerkreferentie": "netwerkreferentie",
-            "rijrichting": "Linkrichtingtype"
+            "parent": "Verkeersdomeinobject",
+            "Rijrichting.netwerkreferentie": "netwerkreferentie",
+            "Rijrichting.rijrichting": "Linkrichtingtype"
         },
         {
             "@id": "_:Agent001",
@@ -117,7 +129,8 @@
         {
             "@id": "_:Wegknoop001",
             "@type": "Wegknoop",
-            "geometrie": {
+            "parent": "Wegobject",
+            "Wegknoop.geometrie": {
                 "@type": "punt",
                 "Geometrie.gml": {
                     "@value": "<gml:Point srsName=\"http:\\//www.opengis.net/def/crs/EPSG/0/4326\"><gml:coordinates>  Vul in: Lat Lon </gml:coordinates><gml:Point>",
@@ -127,76 +140,93 @@
         },
         {
             "@id": "_:Wegobject001",
-            "@type": "Wegobject"
+            "@type": "Wegobject",
+            "parent": "Verkeersdomeinobject"
         },
         {
             "@id": "_:Wegsegment001",
             "@type": "Wegsegment",
-            "geometriemiddenlijn": {
+            "parent": "Wegobject",
+            "Wegsegment.geometriemiddenlijn": {
                 "@type": "lijnstring",
                 "Geometrie.gml": {
                     "@value": "<gml:Polyline srsName=\"http:\\//www.opengis.net/def/crs/EPSG/0/4326\"><gml:coordinates> Vul in: Lat Lon, Lat Lon</gml:coordinates><gml:Point>",
                     "@type": "geosparql:gmlliteral"
                 }
             },
-            "eindknoop": "_:Wegknoop001",
-            "beginknoop": "_:Wegknoop001"
+            "Wegsegment.eindknoop": "_:Wegknoop001",
+            "Wegsegment.beginknoop": "_:Wegknoop001"
         },
         {
             "@id": "_:Input001",
             "@type": "Input",
-            "referentie": "TODO: vul URI in",
-            "type": "cl-Informatietype#Vul_in"
+            "Input.referentie": "PAS AAN: vul URI in",
+            "Input.type": "cl-Informatietype#Vul_in"
         },
         {
             "@id": "_:Output001",
             "@type": "Output",
-            "referentie": "TODO: vul URI in",
-            "type": "cl-Informatietype#Vul_in"
+            "Output.referentie": "PAS AAN: vul URI in",
+            "Output.type": "cl-Informatietype#Vul_in"
         },
         {
             "@id": "_:Observatieprocedure001",
             "@type": "Observatieprocedure",
-            "specificatie": "TODO: vul URI in",
-            "input": "_:Input001",
-            "output": "_:Output001",
-            "type": "cl-Informatietype#Vul_in",
-            "ge\u00ef\u00bf\u00bdmplementeerdMet": "_:Sensor001"
+            "inherited_from": "Aanvullende properties kan je vinden in externe klasse : Procedure",
+            "Observatieprocedure.specificatie": "PAS AAN: vul URI in",
+            "Observatieprocedure.input": "_:Input001",
+            "Observatieprocedure.output": "_:Output001",
+            "Observatieprocedure.type": "cl-Informatietype#Vul_in",
+            "Observatieprocedure.ge\u00ef\u00bf\u00bdmplementeerdMet": "_:Sensor001"
         },
         {
             "@id": "_:Sensor001",
             "@type": "Sensor",
-            "ligging": "Locatie",
-            "gehostDoor": "_:Toestel001",
-            "implementeert": "_:Observatieprocedure001",
-            "uitgevoerdeObservatie": "_:Verkeersmeting001"
+            "inherited_from": "Aanvullende properties kan je vinden in externe klasse : Systeem",
+            "Sensor.ligging": "Locatie",
+            "Sensor.gehostDoor": "_:Toestel001",
+            "Sensor.implementeert": "_:Observatieprocedure001",
+            "Sensor.uitgevoerdeObservatie": "_:Verkeersmeting001"
         },
         {
             "@id": "_:Toestel001",
             "@type": "Toestel",
-            "fabrikant": "LangString",
-            "model": "LangString",
-            "functie": "Functie",
-            "taak": "Taak",
-            "hostVan": "_:Sensor001"
+            "inherited_from": "Aanvullende properties kan je vinden in externe klasse : Platform",
+            "Toestel.fabrikant": {
+                "@language": "nl",
+                "@value": "PAS AAN: vul fabrikant in"
+            },
+            "Toestel.model": {
+                "@language": "nl",
+                "@value": "PAS AAN: vul model in"
+            },
+            "Toestel.functie": "Functie",
+            "Toestel.taak": "Taak",
+            "Toestel.hostVan": "_:Sensor001"
         },
         {
             "@id": "_:metadata001",
             "@type": "metadata",
-            "beschrijving": "LangString",
-            "bron": "TODO: vul URI in",
-            "onderwerp": "TODO: vul URI in",
-            "rechten": "TODO: vul URI in",
-            "relatie": "TODO: vul URI in",
-            "titel": "LangString",
-            "auteur": "_:Agent001",
-            "datum": "temporele entiteit",
-            "dekking": "Dekking",
-            "formaat": "Formaat",
+            "metadata.beschrijving": {
+                "@language": "nl",
+                "@value": "PAS AAN: vul beschrijving in"
+            },
+            "metadata.bron": "PAS AAN: vul URI in",
+            "metadata.onderwerp": "PAS AAN: vul URI in",
+            "metadata.rechten": "PAS AAN: vul URI in",
+            "metadata.relatie": "PAS AAN: vul URI in",
+            "metadata.titel": {
+                "@language": "nl",
+                "@value": "PAS AAN: vul titel in"
+            },
+            "metadata.auteur": "_:Agent001",
+            "metadata.datum": "temporele entiteit",
+            "metadata.dekking": "Dekking",
+            "metadata.formaat": "Formaat",
             "medeAuteur": "",
-            "taal": "cl-Taalcode#Vul_in",
-            "type": "cl-Informatietype#Vul_in",
-            "uitgever": "_:Agent001"
+            "metadata.taal": "cl-Taalcode#Vul_in",
+            "metadata.type": "cl-Informatietype#Vul_in",
+            "metadata.uitgever": "_:Agent001"
         },
         {
             "@id": "_:Link001",
@@ -241,17 +271,20 @@
         {
             "@id": "_:Fietspad001",
             "@type": "Fietspad",
-            "netwerkreferentie": "netwerkreferentie"
+            "parent": "Verkeersdomeinobject",
+            "Fietspad.netwerkreferentie": "netwerkreferentie"
         },
         {
             "@id": "_:Voetpad001",
             "@type": "Voetpad",
-            "netwerkreferentie": "netwerkreferentie"
+            "parent": "Verkeersdomeinobject",
+            "Voetpad.netwerkreferentie": "netwerkreferentie"
         },
         {
             "@id": "_:Verkeersdeelnemer001",
             "@type": "Verkeersdeelnemer",
-            "verkeersdeelnemertype": "cl-Verkeersdeelnemertype#Vul_in"
+            "parent": "Verkeersdomeinobject",
+            "Verkeersdeelnemer.verkeersdeelnemertype": "cl-Verkeersdeelnemertype#Vul_in"
         },
         {
             "@id": "_:Wegdeel001",
@@ -260,7 +293,8 @@
         {
             "@id": "_:Weglinksequentie001",
             "@type": "Weglinksequentie",
-            "link": {
+            "parent": "Wegobject",
+            "Weglinksequentie.link": {
                 "@type": "gerichte link",
                 "richting": null
             }

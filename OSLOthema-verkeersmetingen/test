@@ -1,0 +1,70 @@
+    {
+      "@id": "urn:oslo-toolchain:dc020eeb66b8d467955f59144c2680e0dc090190ff706e376d6e71049239f346",
+      "@type": "Class",
+      "assignedURI": "http://def.isotc211.org/iso19156/2011/SamplingFeature#SF_SamplingFeature",
+      "vocLabel": [
+        {
+          "@language": "nl",
+          "@value": "Bemonsteringsobject"
+        },
+        {
+          "@language": "en",
+          "@value": "Bemonsteringsobject"
+        }
+      ],
+      "apLabel": [
+        {
+          "@language": "nl",
+          "@value": "Bemonsteringsobject"
+        },
+        {
+          "@language": "en",
+          "@value": ""
+        }
+      ],
+      "diagramLabel": [
+        {
+          "@value": "Bemonsteringsobject"
+        }
+      ],
+      "apDefinition": [
+        {
+          "@language": "nl",
+          "@value": "Type vd string slaat op het identificatiesysteem (incl de versie ervan), de string zelf op de eigenlijke identificator."
+        },
+        {
+          "@language": "en",
+          "@value": "Type of the string refers to the identifier (incl its version), the string itself to the actual identifier."
+        }
+      ],
+      "apUsageNote": [
+        {
+          "@language": "nl",
+          "@value": "Type vd string slaat op het identificatiesysteem (incl de versie ervan), de string zelf op de eigenlijke identificator."
+        },
+        {
+          "@language": "en",
+          "@value": "Type of the string refers to the identifier (incl its version), the string itself to the actual identifier."
+        }
+      ],
+    "domain": {
+        "@id": "urn:oslo-toolchain:369a29542616ddec7336591c816ba8ed93d434824f483112526745fffb90bd92"
+      },
+      "range": {
+        "@id": "urn:oslo-toolchain:2049156247"
+      },
+      "minCount": "0",
+      "maxCount": "1",
+      "scope": "https://data.vlaanderen.be/id/concept/scope/External",
+      "parent": [
+        {
+          "@id": "urn:oslo-toolchain:684a44dc0aa851133f2f91069da75e2dd4816d4b17de846a1a3797c8df66e947"
+        },
+        {
+          "@id": "urn:oslo-toolchain:dc020eeb66b8d467955f59144c2680e0dc090190ff706e376d6e71049239f346"
+        }
+      ]
+    }
+    
+
+
