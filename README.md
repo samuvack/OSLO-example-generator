@@ -11,8 +11,8 @@
 
 ```mermaid
 flowchart class_dict
-    A[class_id] -->|class_name| B(( ));
-    A[class_id] -->|formated_blank_node| C(( ));
-    A[class_id] -->|assigned_URI| D(( ));
-    A[class_id] -->|scope| E(( ));
+    A[class_id] -->B((class_name));
+    A[class_id] -->C((formated_blank_node));
+    A[class_id] -->D((assigned_URI));
+    A[class_id] -->E((scope));
 ```
