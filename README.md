@@ -10,7 +10,7 @@
 ### Python script
 
 ```mermaid
-flowchart class_dict
+graph class_dict
     A[class_id] -->B((class_name));
     A[class_id] -->C((formated_blank_node));
     A[class_id] -->D((assigned_URI));
