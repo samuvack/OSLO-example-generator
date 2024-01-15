@@ -1,4 +1,4 @@
-# jsonld example generator
+# OSLO example generator
 
 This Python script generates a JSON-LD template using an OSLO model. It starts with an OSLO RDF intermediary and a specified starting class (e.g., 'Verkeersmeting'). The script creates a template with blank node names, types, and properties, and links classes where necessary.
 
