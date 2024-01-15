@@ -108,7 +108,7 @@
     }
   },
   "@id": "'https://data.vlaanderen.be#'/'Verkeersmetingen-ap'",
-  "generatedAtTime": "2024-01-10T14:14:56.968Z",
+  "generatedAtTime": "2024-01-15T15:45:08.545Z",
   "packages": [
     {
       "@id": "urn:oslo-toolchain:f7e0e0f9e84d125e86ed170dec2578da1690422140419fc73f336a502641970a",

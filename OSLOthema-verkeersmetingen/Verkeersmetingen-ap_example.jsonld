@@ -26,8 +26,7 @@
         },
         {
             "@id": "_:Verkeersobject001",
-            "@type": "Verkeersobject",
-            "Verkeersobject.waardeverschaffer": "_:Verkeersmeting001"
+            "@type": "Verkeersobject"
         },
         {
             "@id": "_:Verkeersmeting001",
@@ -184,9 +183,7 @@
             "@type": "Sensor",
             "inherited_from": "Aanvullende properties kan je vinden in externe klasse : Systeem",
             "Sensor.ligging": "Locatie",
-            "Sensor.gehostDoor": "_:Toestel001",
-            "Sensor.implementeert": "_:Observatieprocedure001",
-            "Sensor.uitgevoerdeObservatie": "_:Verkeersmeting001"
+            "Sensor.gehostDoor": "_:Toestel001"
         },
         {
             "@id": "_:Toestel001",
@@ -201,8 +198,7 @@
                 "@value": "PAS AAN: vul model in"
             },
             "Toestel.functie": "Functie",
-            "Toestel.taak": "Taak",
-            "Toestel.hostVan": "_:Sensor001"
+            "Toestel.taak": "Taak"
         },
         {
             "@id": "_:metadata001",

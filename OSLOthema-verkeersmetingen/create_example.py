@@ -29,6 +29,7 @@ def run_command(command):
     except subprocess.CalledProcessError as e:
         print(f"An error occurred: {e}")
 
+
 def main():
     json_file = 'Verkeersmetingen.json'
     output_file = 'extracted_data.txt'
@@ -48,7 +49,7 @@ def main():
 
 
 
-    start_class = "Verkeersmetingen"
+    start_class = "Verkeersmeting"
 
     # Function to read the JSON-LD file
     def read_jsonld_file(file_path):
@@ -143,6 +144,7 @@ def main():
 
     def unique_dict(d):
         seen = set()
+        remove_d = {}
         unique_d = {}
 
         for key, value in d.items():
@@ -151,8 +153,11 @@ def main():
             if value_with_placeholder not in seen:
                 seen.add(value_with_placeholder)
                 unique_d[key] = value
+            else:
+                remove_d[key] = value
+                
 
-        return unique_d
+        return unique_d, remove_d
 
     def to_camel_case(input_string):
         # Verwijder het "^"-teken
@@ -290,19 +295,16 @@ def main():
         
         relation_dict = {key: [property_name_to_domain_id.get(key), relations_dict.get(key)] for key in property_name_to_domain_id}
 
-        
         class_dict = {class_name_to_original_id[key]: [key, class_name_to_formatted_id.get(key), class_name_to_assigned_URI.get(key), class_name_to_scope.get(key)] for key in class_name_to_original_id}
-        #print(class_dict)
-        
+
         
 
         # Het resultaat zal een dictionary zijn met "@id" als sleutels en de rest van de data als sub-dictionary
-
-
 
         # Het resultaat zal een dictionary zijn met "@id" als sleutels en de rest van de data als sub-dictionary
         class_dict2 = {}
         attributes_dict = {}
+        link_dict = {}
 
         # CREATE class_dict2
         for class_element in classes_data:
@@ -331,8 +333,30 @@ def main():
                     if class_dict2[current_id].get("assignedURI") == "http://www.w3.org/2004/02/skos/core#Concept":
                         class_dict2[current_id]["codelijst"] = "yes"
 
-                        
-        print(class_dict2)
+
+        # CREATE class_dict2
+        for class_element in attributes_data:
+            if "@id" in class_element:
+                current_id = class_element["@id"]
+                if 'range' in class_element:
+                        link_dict[current_id] = {} 
+
+                for key, value in class_element.items():
+                    if key == 'range':                    
+                        # Check of de waarde een lijst van dictionaries is
+                        if isinstance(value, list) and value and isinstance(value[0], dict) and "@language" in value[0]:
+                            # Zoek naar de dictionary met "@language": language
+                            nl_value = next((item["@value"] for item in value if item.get("@language") == language), None)
+                            if nl_value:
+                                link_dict[current_id][key] = nl_value
+                                if key == "vocLabel":
+                                    link_dict[current_id]["blank_node"] = "_:"+nl_value+"001"
+                        else:
+                            link_dict[current_id][key] = value["@id"]
+
+        #print(link_dict)
+
+
                             
         # CREATE attributes_dict
         for attribute_element in attributes_data:
@@ -354,29 +378,33 @@ def main():
 
         
         relation_dict2 = {property_name_to_domain_id[key]: [key, property_name_to_range_id.get(key)] for key in property_name_to_domain_id}
-  
+        #print(relation_dict)
         
         primary_id = find_value_for_key(class_name_to_original_id, start_class)
         
         orden_relations = reorder_dictionary_based_on_values(relation_dict, primary_id)
+        #print(orden_relations)
+        new_relation,remove_relations  = unique_dict(orden_relations)
+        #print(new_relation)
         
-        new_relation = unique_dict(orden_relations)
+        #print(remove_relations)
         
-        relation_name = new_relation
+        relation_name = orden_relations
+        
         
         # Vervang de tweede waarde in elke lijst van original_dict met de overeenkomstige waarde uit replacement_dict
         for key, value in relation_name.items():
             # Controleer of de waarde een lijst is met minimaal twee elementen
             if value[1] in class_dict:
                     value[1] = class_dict[value[1]][1]
-        
+        #print (attribute_element)
         
         for key, value in relation_name.items():
             if isinstance(value, list) and len(value) > 1:
                 relation_name[key] = value[1]
+
         
         relation_name = {k: v for k, v in relation_name.items() if v is not None and not str(v).startswith("urn:")}
-        print(data)
         for class_name, details in data.items():
             _id= details["id"]
             class_structure = {
@@ -389,9 +417,9 @@ def main():
             
             if "parent" in class_dict2[_id]: #TODO: add property inherited from
                 for parent in class_dict2[_id].get("parent"):
-                    print(parent["@id"])
+              
                     if class_dict2[parent["@id"]].get("inherited_class") == "yes":
-                        print("YES")
+                   
                         if class_dict2[parent["@id"]].get("vocLabel"):
                             class_structure["inherited_from"] = "Aanvullende properties kan je vinden in externe klasse : "+class_dict2[parent["@id"]].get("vocLabel")
                     else:
@@ -407,26 +435,37 @@ def main():
                 
                 formatted_property_name = to_camel_case(formatted_property_name)
                 range_id = property_name_to_range_id.get(formatted_property_name)
+                #print(property_name)
                 full_class_name = class_name + "." + property_name
                 # Setting the value to the corresponding class reference if exists
                 if range_id and range_id in class_name_to_original_id:
+                    if property_name in new_relation:
+                        class_dict["properties"] = "yes"
                         class_structure[full_class_name] = class_name_to_original_id.get(range_id, "")
-                elif property_name in relation_name:
+                    else:
+                        continue
+                elif property_name in relation_name and property_name not in remove_relations:
+                        class_dict["properties"] = "yes"
                         class_structure[full_class_name] = relation_name[property_name] #TODO:PAS AAN
                 elif range_id in types_dict:
                     if types_dict[range_id] == "TaalString" or types_dict[range_id] == "LangString":
+                        class_dict["properties"] = "yes"
                         class_structure[full_class_name] = {"@language": "nl", "@value": "PAS AAN: vul "+property_name +" in"}
                     elif types_dict[range_id] == "String":
+                        class_dict["properties"] = "yes"
                         class_structure[full_class_name] = "PAS AAN: vul "+property_name +" in"
                     elif types_dict[range_id] == "URI":
+                        class_dict["properties"] = "yes"
                         class_structure[full_class_name] = "PAS AAN: vul URI in"
                     elif types_dict[range_id] == "DateTime":
+                        class_dict["properties"] = "yes"
                         class_structure[full_class_name] = {"@type": "time:Instant",
                                                 "time:inXSDDateTime": {
                                                 "@type": "xml-schema:dateTime",
                                                 "@value": "Vul in: YYYY-MM-DDThh:mm:ss"
                                                 }}
                     elif types_dict[range_id] == "punt":
+                        class_dict["properties"] = "yes"
                         class_structure[full_class_name] = {"@type": "punt",
                                                 "Geometrie.gml": {
                                                     "@value": "<gml:Point srsName=\"http:\\//www.opengis.net/def/crs/EPSG/0/4326\"><gml:coordinates>  Vul in: Lat Lon </gml:coordinates><gml:Point>",
@@ -434,6 +473,7 @@ def main():
                                                     }
                                                     }
                     elif types_dict[range_id] == "lijnstring":
+                        class_dict["properties"] = "yes"
                         class_structure[full_class_name] = {"@type": "lijnstring",
                                                 "Geometrie.gml": {
                                                     "@value": "<gml:Polyline srsName=\"http:\\//www.opengis.net/def/crs/EPSG/0/4326\"><gml:coordinates> Vul in: Lat Lon, Lat Lon</gml:coordinates><gml:Point>",
@@ -441,6 +481,7 @@ def main():
                                                     }
                                                     }
                     elif types_dict[range_id] == "Identificator":
+                        class_dict["properties"] = "yes"
                         class_structure[full_class_name] =  {
                                 "@type": "Identificator",
                                 "Identificator.identificator": {
@@ -456,12 +497,13 @@ def main():
                             result_dict = {"@type": types_dict[range_id]}
                             
                             loop_datatypes(datatypes_dict, result_dict, datatypes_yellow, types_dict,range_id, class_name)
-                            
                             class_structure[full_class_name] = result_dict
                         else:
                             if types_dict[range_id] == "TaalString":
+
                                 class_structure[full_class_name] = {"@language": "nl", "@value": "PAS AAN: vul "+property_name +" in"}
                             elif types_dict[range_id] == "String":
+
                                 class_structure[full_class_name] = "PAS AAN: vul "+property_name +" in"
                             class_structure[full_class_name] = types_dict[range_id]
                             
@@ -472,7 +514,8 @@ def main():
                         else:
                             class_structure[full_class_name] = class_dict.get(relation_dict.get(property_name)[1])[1]
                     else:
-                        class_structure[property_name] = ""
+                        if property_name not in remove_relations:
+                            class_structure[property_name] = ""
             if class_dict2.get(data[class_name].get('id'))['assignedURI'] == "http://www.w3.org/2004/02/skos/core#Concept":
                     continue
             elif class_name_to_scope.get(class_name) is None:
@@ -483,6 +526,37 @@ def main():
         return jsonld_structure
 
 
+    def find_children(classes, start_id):
+        """
+        Find all children of a class starting from the '@id' of that class.
+        Children are identified by having the '@id' of the starting class in their 'parent' key.
+
+        :param classes: List of dictionaries representing classes.
+        :param start_id: The '@id' of the class to start from.
+        :return: A list of '@id's of all children classes.
+        """
+        def find_children_recursive(current_id, classes, found_children):
+            for cls in classes:
+                # Check if this class has a parent and if the current id is one of its parents
+                if 'parent' in cls and any(parent.get('@id') == current_id for parent in cls['parent']):
+                    child_id = cls['@id']
+                    if child_id not in found_children:
+                        found_children.append(child_id)
+                        find_children_recursive(child_id, classes, found_children)
+
+        children_ids = []
+        find_children_recursive(start_id, classes, children_ids)
+        return children_ids
+
+
+
+    # Find children starting from a given '@id'
+    start_class_id = 'urn:oslo-toolchain:684a44dc0aa851133f2f91069da75e2dd4816d4b17de846a1a3797c8df66e947'
+
+
+
+    
+    
     # File paths
     input_file_path = name + '.jsonld'
     output_file_path = name + '_example.jsonld'
@@ -490,6 +564,7 @@ def main():
 
     # Reading the JSON-LD file
     jsonld_data = read_jsonld_file(input_file_path)
+
 
     # Extracting classes and properties
     extracted_data, attributes_data = extract_classes_and_properties_from_jsonld(jsonld_data)
@@ -510,8 +585,10 @@ def main():
                     context.append(context_entry)
     context = {k: v for d in context for k, v in d.items()}
 
-
-
+    children = find_children(jsonld_data['classes'], start_class_id)
+    print(children)
+    
+    
     # Create JSON-LD with the provided context
     final_jsonld_data = create_jsonld_with_context(jsonld_formatted_data, context)
 
