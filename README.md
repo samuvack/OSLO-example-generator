@@ -17,21 +17,21 @@ Currently, an inherited class is also added to the class (e.g. inherited_from": 
 
 
 ```json
-
-            "@id": "_:Verkeersmeting001",
-            "@type": "Verkeersmeting",
-            "inherited_from": "Aanvullende properties kan je vinden in externe klasse : Observatie",
-            "Verkeersmeting.fenomeenTijd": "temporele entiteit",
-            "Verkeersmeting.resultaat": "Any",
-            "Verkeersmeting.resultaattijd": "Moment",
-            "Verkeersmeting.resultaatkwaliteit": "Kwaliteitselement",
-            "uitgevoerdDoor": "",
-            "Verkeersmeting.metadata": "_:metadata001",
-            "Verkeersmeting.geobserveerdKenmerk": "_:Verkeerskenmerk001",
-            "Verkeersmeting.geobserveerdObject": "_:Verkeersobject001",
-            "Verkeersmeting.gebruikteProcedure": "_:Observatieprocedure001",
-            "Verkeersmeting.uitgevoerdMet": "_:Sensor001"
-
+{
+"@id": "_:Verkeersmeting001",
+"@type": "Verkeersmeting",
+"inherited_from": "Aanvullende properties kan je vinden in externe klasse : Observatie",
+"Verkeersmeting.fenomeenTijd": "temporele entiteit",
+"Verkeersmeting.resultaat": "Any",
+"Verkeersmeting.resultaattijd": "Moment",
+"Verkeersmeting.resultaatkwaliteit": "Kwaliteitselement",
+"uitgevoerdDoor": "",
+"Verkeersmeting.metadata": "_:metadata001",
+"Verkeersmeting.geobserveerdKenmerk": "_:Verkeerskenmerk001",
+"Verkeersmeting.geobserveerdObject": "_:Verkeersobject001",
+"Verkeersmeting.gebruikteProcedure": "_:Observatieprocedure001",
+"Verkeersmeting.uitgevoerdMet": "_:Sensor001"
+}
 ```
 
 
