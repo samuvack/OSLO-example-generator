@@ -38,18 +38,18 @@ Currently, an inherited class is also added to the class (e.g. inherited_from": 
 For commonly used data types, the Python script embeds the elaborated OSLO structure. For instance, when the datatype is “Punt”, the Python script adds this:
 
 ```json
-            "Verkeersmeetpunt.geometrie": {
-                "@type": "punt",
-                "Geometrie.gml": {
-                    "@value": "<gml:Point srsName=\"http:\\//www.opengis.net/def/crs/EPSG/0/4326\"><gml:coordinates>  Vul in: Lat Lon </gml:coordinates><gml:Point>",
-                    "@type": "geosparql:gmlliteral"
-                }
-            },
+"Verkeersmeetpunt.geometrie": {
+    "@type": "punt",
+    "Geometrie.gml": {
+        "@value": "<gml:Point srsName=\"http:\\//www.opengis.net/def/crs/EPSG/0/4326\"><gml:coordinates>  Vul in: Lat Lon </gml:coordinates><gml:Point>",
+        "@type": "geosparql:gmlliteral"
+    }
+}
 ```
 Or for a “TaalString”:
 ```json
-            "metadata.beschrijving": {
-                "@language": "nl",
-                "@value": "PAS AAN: vul beschrijving in"
-            },
+"metadata.beschrijving": {
+    "@language": "nl",
+    "@value": "PAS AAN: vul beschrijving in"
+}
 ```
