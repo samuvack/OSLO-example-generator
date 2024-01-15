@@ -9,11 +9,14 @@ The purpose of this Python conversion tool is to generate jsonld templates based
 
 Starting with a class, it generates a blank node name (e.g. "@id": "_:Verkeersmeting001"), followed by its "@type" and all its properties. If a property or attribute points to another class, the blank node of that class is added as the value of that property.
 
+![image](https://github.com/samuvack/OSLO-example-generator/assets/15192194/6e9f0e63-c19a-4c5e-9422-afb38e3a9c7d)
 
 
 The relationship between two classes is chosen in the direction starting from the starting class (e.g. Verkeersmeting). So the relation "UitgevoerdeObservatie" is not added to the element "Verkeersmeting". However, "UitgevoerdMet" is added as a relation between "Verkeersmeting" and "Sensor".
 
 Currently, an inherited class is also added to the class (e.g. inherited_from": "Aanvullende properties kan je vinden in externe klasse : Observatie"). This allows for additional attributes from this inherited class to be added to this class. In the future, all attributes from a specific inherited class will be added.
+
+![image](https://github.com/samuvack/OSLO-example-generator/assets/15192194/5b9f38a1-fe29-4bb4-bf6b-fa6f7495e664)
 
 
 ```json
